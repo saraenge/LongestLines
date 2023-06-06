@@ -1,8 +1,11 @@
 package com.saraenge.longestlines;
 
+import com.saraenge.longestlines.Repository.StopPointRepository;
 import com.saraenge.longestlines.Repository.TodoRepository;
+import com.saraenge.longestlines.model.StopPoint;
 import com.saraenge.longestlines.model.Todo;
 import com.saraenge.longestlines.service.JSONPlaceholderService;
+import com.saraenge.longestlines.service.TrafiklabService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,6 +34,15 @@ public class LongestLinesApplication {
             List<Todo> todos = jsonPlaceholderService.getTodos();
 
             todoRepository.saveAll(todos);
+        };
+    }
+
+    @Bean
+    CommandLineRunner commandLineRunnerStopPoint(TrafiklabService trafiklabService, StopPointRepository stopPointRepository) {
+        return args -> {
+            List<StopPoint> stopPoints = trafiklabService.getStopPoints();
+
+            stopPointRepository.saveAll(stopPoints);
         };
     }
 
