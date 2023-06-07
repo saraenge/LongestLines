@@ -1,5 +1,9 @@
 package com.saraenge.longestlines.service;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.saraenge.longestlines.TrafiklabConfigProperties;
 import com.saraenge.longestlines.model.JourneyPatternPointOnLine;
 import com.saraenge.longestlines.model.StopPoint;
@@ -9,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -32,6 +37,30 @@ public class TrafiklabService {
                 new ParameterizedTypeReference<List<JourneyPatternPointOnLine>>() {}
         );
         return exchange.getBody();
+    }
+
+    public List<StopPoint> getStopPoints2() {
+        final String fullUrl = getFullUrl("stop");
+        ResponseEntity<String> exchange = restTemplate.exchange(
+                fullUrl,
+                HttpMethod.GET,
+                null,
+                String.class
+        );
+        String body = exchange.getBody();
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            JsonNode jsonNode = objectMapper.readTree(body);
+            JsonNode responseDataNode = jsonNode.get("ResponseData");
+            JsonNode resultNode = responseDataNode.get("Result");
+            List<StopPoint> stopPoints = objectMapper.convertValue(resultNode, new TypeReference<List<StopPoint>>() {});
+
+            return stopPoints;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return new ArrayList<>();
     }
 
     public List<StopPoint> getStopPoints() {

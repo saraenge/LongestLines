@@ -6,10 +6,11 @@ create table Todo(
     version int
 );
 
-create table StopPoint(
+create table STOP_POINT(
     id int not null,
-    stop_point_number int not null,
-    stop_point_name varchar(100)
+    STOP_POINT_NUMBER int not null,
+    STOP_POINT_NAME varchar(100),
+    version int
 );
 
 create table JourneyPatternPointOnLine(
