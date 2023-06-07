@@ -1,7 +1,7 @@
 package com.saraenge.longestlines;
 
-import com.saraenge.longestlines.Repository.StopPointRepository;
-import com.saraenge.longestlines.Repository.TodoRepository;
+import com.saraenge.longestlines.repository.StopPointRepository;
+import com.saraenge.longestlines.repository.TodoRepository;
 import com.saraenge.longestlines.model.StopPoint;
 import com.saraenge.longestlines.model.Todo;
 import com.saraenge.longestlines.service.JSONPlaceholderService;

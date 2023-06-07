@@ -1,4 +1,4 @@
-package com.saraenge.longestlines.Repository;
+package com.saraenge.longestlines.repository;
 
 import com.saraenge.longestlines.model.JourneyPatternPointOnLine;
 import org.springframework.data.repository.CrudRepository;
