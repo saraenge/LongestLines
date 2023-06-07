@@ -48,6 +48,6 @@ public class TrafiklabService {
         return API_BASE_URL
                 .replace("[model]", model)
                 .replace("[key]", apikey)
-                .concat(onlyBus);
+                .concat("&" + onlyBus);
     }
 }
