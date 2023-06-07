@@ -1,7 +1,6 @@
 package com.saraenge.longestlines.deserializer;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
@@ -21,14 +20,13 @@ public class StopPointDeserializer extends StdDeserializer<StopPoint> {
 
     @Override
     public StopPoint deserialize(JsonParser jp, DeserializationContext ctxt)
-            throws IOException, JsonProcessingException {
+            throws IOException {
 
         JsonNode stopPointNode = jp.getCodec().readTree(jp);
         final int number = stopPointNode.get("StopPointNumber").asInt();
         final String name = stopPointNode.get("StopPointName").textValue();
 
-        StopPoint stopPoint = new StopPoint(number, number, name, null);
-        return stopPoint;
+        return new StopPoint(number, number, name, null);
     }
 }
 

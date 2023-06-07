@@ -40,7 +40,7 @@ public class LongestLinesApplication {
     @Bean
     CommandLineRunner commandLineRunnerStopPoint(TrafiklabService trafiklabService, StopPointRepository stopPointRepository) {
         return args -> {
-            List<StopPoint> stopPoints = trafiklabService.getStopPoints2();
+            List<StopPoint> stopPoints = trafiklabService.getStopPoints();
 
             stopPointRepository.saveAll(stopPoints);
         };

@@ -39,7 +39,7 @@ public class TrafiklabService {
         return exchange.getBody();
     }
 
-    public List<StopPoint> getStopPoints2() {
+    public List<StopPoint> getStopPoints() {
         final String fullUrl = getFullUrl("stop");
         ResponseEntity<String> exchange = restTemplate.exchange(
                 fullUrl,
@@ -54,23 +54,12 @@ public class TrafiklabService {
             JsonNode jsonNode = objectMapper.readTree(body);
             JsonNode responseDataNode = jsonNode.get("ResponseData");
             JsonNode resultNode = responseDataNode.get("Result");
-            List<StopPoint> stopPoints = objectMapper.convertValue(resultNode, new TypeReference<List<StopPoint>>() {});
+            return objectMapper.convertValue(resultNode, new TypeReference<List<StopPoint>>() {});
 
-            return stopPoints;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return new ArrayList<>();
-    }
-
-    public List<StopPoint> getStopPoints() {
-        ResponseEntity<List<StopPoint>> exchange = restTemplate.exchange(
-                getFullUrl("stop"),
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<List<StopPoint>>() {}
-        );
-        return exchange.getBody();
     }
 
     private String getFullUrl(final String model) {
