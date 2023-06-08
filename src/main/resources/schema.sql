@@ -13,9 +13,9 @@ create table STOP_POINT(
     version int
 );
 
-create table JourneyPatternPointOnLine(
-    id int not null,
-    lineNumber int not null,
-    directionCode int not null,
-    JourneyPatternPointNumber int not null
+create table JOURNEY_PATTERN_POINT_ON_LINE(
+    id long not null,
+    LINE_NUMBER int not null,
+    DIRECTION_CODE int not null,
+    STOP_POINT_NUMBER int not null
 );
