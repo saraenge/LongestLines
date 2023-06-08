@@ -1,5 +1,7 @@
 package com.saraenge.longestlines;
 
+import com.saraenge.longestlines.model.JourneyPatternPointOnLine;
+import com.saraenge.longestlines.repository.JourneyPatternPointOnLineRepository;
 import com.saraenge.longestlines.repository.StopPointRepository;
 import com.saraenge.longestlines.repository.TodoRepository;
 import com.saraenge.longestlines.model.StopPoint;
@@ -43,6 +45,15 @@ public class LongestLinesApplication {
             List<StopPoint> stopPoints = trafiklabService.getStopPoints();
 
             stopPointRepository.saveAll(stopPoints);
+        };
+    }
+
+    @Bean
+    CommandLineRunner commandLineRunnerJourneyAPI(TrafiklabService trafiklabService, JourneyPatternPointOnLineRepository journeyPatternPointOnLineRepository) {
+        return args -> {
+            List<JourneyPatternPointOnLine> pointsOnLines = trafiklabService.getPointsOnLine();
+
+            journeyPatternPointOnLineRepository.saveAll(pointsOnLines);
         };
     }
 
