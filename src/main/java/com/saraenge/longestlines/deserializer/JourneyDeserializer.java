@@ -28,7 +28,7 @@ public class JourneyDeserializer extends StdDeserializer<JourneyPatternPointOnLi
         final int directionCode = journeyPatternNode.get("DirectionCode").asInt();
         final int stopPointNumber  = journeyPatternNode.get("JourneyPatternPointNumber").asInt();
 
-        return new JourneyPatternPointOnLine(lineNumber, directionCode, stopPointNumber);
+        return new JourneyPatternPointOnLine(lineNumber, directionCode, stopPointNumber, null);
     }
 }
 
