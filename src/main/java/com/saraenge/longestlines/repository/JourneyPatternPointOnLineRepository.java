@@ -15,4 +15,10 @@ public interface JourneyPatternPointOnLineRepository extends CrudRepository<Jour
             "ORDER BY number_of_stops DESC " +
             "LIMIT 15;")
     List<LineInfoDTO> findTop15LinesWithMostStops();
+
+    @Query("SELECT s.STOP_POINT_NAME FROM JOURNEY_PATTERN_POINT_ON_LINE j " +
+            "JOIN STOP_POINT s " +
+            "WHERE j.STOP_POINT_NUMBER = s.STOP_POINT_NUMBER " +
+            "AND j.LINE_NUMBER = :line AND j.DIRECTION_CODE = :direction ")
+    List<String> findStopsByLine(final int line, final int direction);
 }

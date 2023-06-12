@@ -3,11 +3,13 @@ package com.saraenge.longestlines.controller;
 import com.saraenge.longestlines.model.JourneyPatternPointOnLine;
 import com.saraenge.longestlines.model.StopPoint;
 import com.saraenge.longestlines.model.dto.LineInfoDTO;
+import com.saraenge.longestlines.model.dto.StopsInfoDTO;
 import com.saraenge.longestlines.repository.JourneyPatternPointOnLineRepository;
 import com.saraenge.longestlines.repository.StopPointRepository;
 import com.saraenge.longestlines.service.LongestLinesService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -59,5 +61,10 @@ public class LongestLinesController {
     @GetMapping("/lines")
     public List<LineInfoDTO> getTop10Lines() {
         return longestLinesService.getTop10LongestLines();
+    }
+
+    @GetMapping("/stops")
+    public StopsInfoDTO getTop10Lines(@RequestParam int line, @RequestParam int direction) {
+        return longestLinesService.getStopsByLine(line, direction);
     }
 }
