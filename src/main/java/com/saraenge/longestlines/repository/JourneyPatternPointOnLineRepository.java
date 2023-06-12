@@ -9,10 +9,10 @@ import java.util.List;
 
 public interface JourneyPatternPointOnLineRepository extends CrudRepository<JourneyPatternPointOnLine, Integer> {
 
-    @Query("SELECT LINE_NUMBER , DIRECTION_CODE AS direction , COUNT(*) AS number_of_stops\n" +
-            "FROM JOURNEY_PATTERN_POINT_ON_LINE \n" +
-            "GROUP BY LINE_NUMBER , DIRECTION_CODE \n" +
-            "ORDER BY number_of_stops DESC\n" +
+    @Query("SELECT LINE_NUMBER , DIRECTION_CODE AS direction , COUNT(*) AS number_of_stops " +
+            "FROM JOURNEY_PATTERN_POINT_ON_LINE " +
+            "GROUP BY LINE_NUMBER , DIRECTION_CODE " +
+            "ORDER BY number_of_stops DESC " +
             "LIMIT 15;")
     List<LineInfoDTO> findTop15LinesWithMostStops();
 }
