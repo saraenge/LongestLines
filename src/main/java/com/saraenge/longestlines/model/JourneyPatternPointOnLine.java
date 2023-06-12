@@ -29,11 +29,4 @@ public class JourneyPatternPointOnLine {
     public int getHashedId() {
         return Objects.hash(lineNumber, directionCode, stopPointNumber);
     }
-    public int getHashedLineId() {
-        return Objects.hash(lineNumber, directionCode);
-    }
-
-    public int stopPoint() {
-        return this.stopPointNumber;
-    }
 }
