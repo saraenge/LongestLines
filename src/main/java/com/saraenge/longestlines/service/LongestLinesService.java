@@ -18,7 +18,7 @@ public class LongestLinesService {
     }
 
     public List<LineInfoDTO> getTop10LongestLines() {
-        return journeyRepository.findTop15LinesWithMostStops();
+        return journeyRepository.findTop10LinesWithMostStops();
     }
 
     public StopsInfoDTO getStopsByLine(final int line, final int direction) {
