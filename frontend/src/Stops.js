@@ -2,7 +2,7 @@ import './Stops.css';
 
 const Stops = ({stops}) => {
     return (
-        <ul>
+        <ul className="List">
             {stops?.map((stop, arrayIndex) => (
                 <li key={arrayIndex} className="text">{stop}</li>
             ))}
