@@ -1,3 +1,4 @@
+import './LineRow.css';
 import {useState} from "react";
 import Stops from "./Stops";
 
@@ -24,9 +25,10 @@ const LineRow = ({line, direction, numberOfStops}) => {
     return (
         <div>
             <button
+                className="Line-button"
                 onClick={toggleShowStops}
             >
-                <p >Linje: {line} Riktning: {direction} Antal hållplatser: {numberOfStops}</p>
+                <p className="Line-info">Linje: {line} Riktning: {direction} Antal hållplatser: {numberOfStops}</p>
             </button>
             {showStops && stops &&
                 <Stops
