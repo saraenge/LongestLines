@@ -22,7 +22,9 @@ function App() {
   return (
       <div className="App">
         <header className="App-header">
-          <h1>Longest lines</h1>
+          <p className="App-header-text">Longest lines</p>
+        </header>
+        <body className="App-body">
           {lines?.map((line, arrayIndex) => (
               <LineRow
                   key={arrayIndex}
@@ -30,8 +32,8 @@ function App() {
                   direction={line.direction}
                   numberOfStops={line.numberOfStops}
               />
-              ))}
-        </header>
+          ))}
+        </body>
       </div>
   );
 }
