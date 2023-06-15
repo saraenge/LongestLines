@@ -1,0 +1,18 @@
+.text {
+  display: flex;
+  justify-content: center;
+  font-size: calc(1px + 2vmin);
+  color: white;
+}
+
+.List {
+  padding-inline-start: 2px;
+  margin-top: 0.25em;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  margin-bottom: 2vh;
+  column-count: 3;
+  column-gap: 2px;
+
+}
+

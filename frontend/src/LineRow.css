@@ -1,0 +1,23 @@
+.Line-info {
+  font-size: calc(2px + 2vmin);
+  color: white;
+  margin-block-start: 0.75em;
+  margin-block-end: 0.75em;
+  padding-inline: 2vw;
+}
+
+.Line-button {
+  background-color: #282c34;
+  font-size: calc(2px + 2vmin);
+  border-radius: 22px;
+  border: 2px solid hsl(220, 16%, 28%);
+  margin: 3px;
+  padding-inline: 3vw;
+  display: flex;
+}
+
+.Line-button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
