@@ -24,12 +24,16 @@ const LineRow = ({line, direction, numberOfStops}) => {
 
     return (
         <div>
-            <button
-                className="Line-button"
-                onClick={toggleShowStops}
-            >
-                <p className="Line-info">Linje: {line} Riktning: {direction} Antal hållplatser: {numberOfStops}</p>
-            </button>
+            <div className="Line-button-wrapper">
+                <button
+                    className="Line-button"
+                    onClick={toggleShowStops}
+                >
+                    <div className="Line-info">Linje: {line}</div>
+                    <div className="Line-info">Riktning: {direction}</div>
+                    <div className="Line-info">Antal hållplatser: {numberOfStops}</div>
+                </button>
+            </div>
             {showStops && stops &&
                 <Stops
                     stops={stops.stops}
